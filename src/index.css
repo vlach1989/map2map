@@ -1,5 +1,9 @@
 @import 'leaflet/dist/leaflet.css';
 
+* {
+    box-sizing: border-box;
+}
+
 #root {
     margin: 0;
     position: absolute;

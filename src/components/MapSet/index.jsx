@@ -17,6 +17,7 @@ function MapSet() {
 				onCenterChange={setCenter}
 				onZoomChange={setZoom}
 				crs={crs.get('EPSG:5514')}
+				zoomControl={false}
 				attributionControl={false}
 			>
 				<WMSTileLayer
