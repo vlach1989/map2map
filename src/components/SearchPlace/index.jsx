@@ -1,41 +1,48 @@
 import {IconSearch} from '@tabler/icons-react';
 import {Select} from '@mantine/core';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-
-const data = [
-	{
-		label: 'Praha',
-		value: 'praha',
-		description: 'Hlavní město Praha',
-		data: {
-			zoom: 15,
-			lat: 50.073658,
-			lon: 14.41854,
-		},
-	},
-	{
-		label: 'Plzeň',
-		value: 'plzen',
-		description: 'Hlavní město piva',
-		data: {
-			zoom: 16,
-			lat: 49.73843,
-			lon: 13.373637,
-		},
-	},
-];
 
 const SearchPlace = ({onLocationChange}) => {
 	const [searchValue, setSearchValue] = useState('');
+	const [data, setData] = useState([]);
 
 	const onSearchChange = value => {
 		setSearchValue(value);
+	};
+
+	const onChange = value => {
 		const i = data.find(item => item.label === value);
 		if (i) {
 			onLocationChange({...i.data});
 		}
 	};
+
+	useEffect(() => {
+		const url = `https://nominatim.openstreetmap.org/search?q=${searchValue}&limit=10&format=json&countrycodes=cz`;
+
+		const fetchData = async () => {
+			try {
+				const response = await fetch(url);
+				const json = await response.json();
+				if (json?.length) {
+					setData(
+						json.map(item => {
+							return {
+								label: item.display_name,
+								value: item.display_name,
+								data: {lat: Number(item.lat), lon: Number(item.lon)},
+							};
+						}),
+					);
+				}
+			} catch (error) {
+				console.log('error', error);
+			}
+		};
+
+		fetchData();
+	}, [searchValue]);
 
 	return (
 		<Select
@@ -43,11 +50,11 @@ const SearchPlace = ({onLocationChange}) => {
 			placeholder="Search place"
 			searchable
 			onSearchChange={onSearchChange}
+			onChange={onChange}
 			searchValue={searchValue}
 			clearable={true}
 			nothingFound="No options"
 			data={data}
-			rightSection={<></>}
 			icon={<IconSearch size="1rem" />}
 		/>
 	);
