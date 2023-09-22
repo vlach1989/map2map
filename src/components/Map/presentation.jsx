@@ -1,18 +1,11 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import {MapContainer} from 'react-leaflet';
 import PropTypes from 'prop-types';
+import crsUtils from '../../utils/crs.js';
+import layerHelpers from './layers.jsx';
 import './style.css';
 
-function Map({
-	crs,
-	center,
-	zoom,
-	zoomControl = true,
-	attributionControl = true,
-	onCenterChange,
-	onZoomChange,
-	children,
-}) {
+function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
 	const [map, setMap] = useState(null);
 	const [lat, lon] = center;
 
@@ -25,7 +18,7 @@ function Map({
 			if (lat !== currentLat || lon !== currentLon || zoom !== currentZoom) {
 				const zoomToSet = currentZoom !== zoom ? zoom : currentZoom;
 				map.setView({lat, lng: lon}, zoomToSet, {
-					zoom: {animate: false},
+					zoom: {animate: true},
 					pan: {animate: false},
 				});
 			}
@@ -60,6 +53,8 @@ function Map({
 		};
 	}, [map, onMoveEnd, onZoomEnd]);
 
+	const mapLayers = layers.map(layer => layerHelpers.get(layer, crs));
+
 	const displayMap = useMemo(
 		() => (
 			<MapContainer
@@ -67,11 +62,11 @@ function Map({
 				center={center}
 				zoom={zoom}
 				className="m2m-Map"
-				crs={crs}
-				zoomControl={zoomControl}
-				attributionControl={attributionControl}
+				crs={crsUtils.get(crs)}
+				zoomControl={false}
+				attributionControl={true}
 			>
-				{children}
+				{mapLayers}
 			</MapContainer>
 		),
 		[],
@@ -81,14 +76,12 @@ function Map({
 }
 
 Map.propTypes = {
-	crs: PropTypes.object,
 	center: PropTypes.array,
-	zoom: PropTypes.number,
-	zoomControl: PropTypes.bool,
+	crs: PropTypes.string,
+	layers: PropTypes.array,
 	onCenterChange: PropTypes.func,
 	onZoomChange: PropTypes.func,
-	attributionControl: PropTypes.bool,
-	children: PropTypes.node,
+	zoom: PropTypes.number,
 };
 
 export default Map;

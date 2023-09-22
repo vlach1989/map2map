@@ -2,9 +2,11 @@ import {configureStore} from '@reduxjs/toolkit';
 import {createLogger} from 'redux-logger';
 import process from 'process';
 
+import maps from './maps/reducers';
 import mapSet from './mapSet/reducers';
 
 const reducer = {
+	maps,
 	mapSet,
 };
 

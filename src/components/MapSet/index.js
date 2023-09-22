@@ -8,6 +8,7 @@ const mapStateToProps = state => {
 		crs: Select.mapSet.getCrs(state),
 		lat: Select.mapSet.getLat(state),
 		lon: Select.mapSet.getLon(state),
+		maps: Select.mapSet.getMaps(state),
 		zoom: Select.mapSet.getZoom(state),
 	};
 };
