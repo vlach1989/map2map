@@ -5,11 +5,12 @@ import {
 	MAPS,
 	ZOOM,
 } from '../../constatnts/defaultConfiguration.js';
+import url from '../../utils/url.js';
 
 const initialState = {
-	zoom: ZOOM,
-	lat: CENTER[0],
-	lon: CENTER[1],
+	zoom: url.getParamValue('z') || ZOOM,
+	lat: url.getParamValue('lat') || CENTER[0],
+	lon: url.getParamValue('lon') || CENTER[1],
 	crs: CRS,
 	maps: Object.keys(MAPS),
 };
