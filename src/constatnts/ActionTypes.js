@@ -1,13 +1,12 @@
-export default {
+import deepKeyMirror from '../utils/deepKeyMirror';
+
+export default deepKeyMirror({
 	MAP_SET: {
 		ZOOM: {
-			SET: 'SET',
+			SET: null,
 		},
-		LAT: {
-			LAT: 'SET',
-		},
-		LON: {
-			LON: 'SET',
+		CENTER: {
+			SET: null,
 		},
 	},
-};
+});
