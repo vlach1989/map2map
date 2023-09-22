@@ -1,11 +1,17 @@
 import ActionTypes from '../../constatnts/ActionTypes';
-import {CENTER, CRS, ZOOM} from '../../constatnts/defaultValues.js';
+import {
+	CENTER,
+	CRS,
+	MAPS,
+	ZOOM,
+} from '../../constatnts/defaultConfiguration.js';
 
 const initialState = {
 	zoom: ZOOM,
 	lat: CENTER[0],
 	lon: CENTER[1],
 	crs: CRS,
+	maps: Object.keys(MAPS),
 };
 
 const setZoom = (state, action) => {

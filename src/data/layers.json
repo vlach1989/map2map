@@ -1,0 +1,24 @@
+{
+	"cuzk_ortofoto_historicka": {
+		"key": "cuzk_ortofoto_historicka",
+		"type": "wms",
+		"availableCrs": ["EPSG:5514"],
+		"data": {
+			"url": "https://gis.cenia.cz/mapcache/ortofotomapa_historicka/wms?",
+			"params": {
+				"layers": "orto"
+			}
+		}
+	},
+	"cuzk_ortofoto_aktualni": {
+		"key": "cuzk_ortofoto_aktualni",
+		"type": "wms",
+		"availableCrs": ["EPSG:5514"],
+		"data": {
+			"url": "https://ags.cuzk.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer",
+			"params": {
+				"layers": "0"
+			}
+		}
+	}
+}
