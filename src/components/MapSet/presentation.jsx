@@ -1,12 +1,12 @@
 import {useEffect} from 'react';
 import {WMSTileLayer} from 'react-leaflet';
 import PropTypes from 'prop-types';
-import crs from '../../utils/crs.js';
+import crsUtils from '../../utils/crs.js';
 import Map from '../Map/index.jsx';
 
 import './style.css';
 
-function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
+function MapSet({crs, lat, lon, onCenterChange, onZoomChange, zoom}) {
 	useEffect(() => {
 		onZoomChange(zoom);
 	}, [onZoomChange, zoom]);
@@ -22,7 +22,7 @@ function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
 				zoom={zoom}
 				onCenterChange={onCenterChange}
 				onZoomChange={onZoomChange}
-				crs={crs.get('EPSG:5514')}
+				crs={crsUtils.get(crs)}
 				zoomControl={false}
 				attributionControl={false}
 			>
@@ -31,7 +31,7 @@ function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
 					params={{
 						layers: 'orto',
 					}}
-					crs={crs.get('EPSG:5514')}
+					crs={crsUtils.get(crs)}
 				/>
 			</Map>
 			<Map
@@ -39,7 +39,7 @@ function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
 				zoom={zoom}
 				onCenterChange={onCenterChange}
 				onZoomChange={onZoomChange}
-				crs={crs.get('EPSG:5514')}
+				crs={crsUtils.get(crs)}
 				zoomControl={false}
 			>
 				<WMSTileLayer
@@ -49,7 +49,7 @@ function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
 					params={{
 						layers: '0',
 					}}
-					crs={crs.get('EPSG:5514')}
+					crs={crsUtils.get(crs)}
 				/>
 			</Map>
 		</div>
@@ -57,11 +57,12 @@ function MapSet({zoom, lat, lon, onZoomChange, onCenterChange}) {
 }
 
 MapSet.propTypes = {
+	crs: PropTypes.string,
 	lat: PropTypes.number,
 	lon: PropTypes.number,
-	zoom: PropTypes.number,
-	onZoomChange: PropTypes.func,
 	onCenterChange: PropTypes.func,
+	onZoomChange: PropTypes.func,
+	zoom: PropTypes.number,
 };
 
 export default MapSet;

@@ -2,10 +2,13 @@ import deepKeyMirror from '../utils/deepKeyMirror';
 
 export default deepKeyMirror({
 	MAP_SET: {
-		ZOOM: {
+		CENTER: {
 			SET: null,
 		},
-		CENTER: {
+		CRS: {
+			SET: null,
+		},
+		ZOOM: {
 			SET: null,
 		},
 	},

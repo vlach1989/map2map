@@ -5,9 +5,10 @@ import Action from '../../state/Action.js';
 
 const mapStateToProps = state => {
 	return {
-		zoom: Select.mapSet.getZoom(state),
+		crs: Select.mapSet.getCrs(state),
 		lat: Select.mapSet.getLat(state),
 		lon: Select.mapSet.getLon(state),
+		zoom: Select.mapSet.getZoom(state),
 	};
 };
 
