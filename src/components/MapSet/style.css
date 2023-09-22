@@ -3,3 +3,9 @@
     width: 100%;
     height: 100%;
 }
+
+@media (orientation: portrait) {
+    .m2m-MapSet {
+        flex-direction: column;
+    }
+}
