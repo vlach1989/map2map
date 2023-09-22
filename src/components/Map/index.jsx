@@ -60,6 +60,8 @@ function Map({
 		};
 	}, [map, onMoveEnd, onZoomEnd]);
 
+	console.log(map, zoom);
+
 	const displayMap = useMemo(
 		() => (
 			<MapContainer

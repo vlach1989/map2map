@@ -1,9 +1,9 @@
 import {MantineProvider} from '@mantine/core';
-import MapSet from '../MapSet/index.jsx';
+import MapSet from '../MapSet';
 import TopBar from '../TopBar/index.jsx';
 import './style.css';
 
-function App() {
+const App = () => {
 	return (
 		<MantineProvider withGlobalStyles withNormalizeCSS>
 			<div className="m2m-App">
@@ -12,6 +12,6 @@ function App() {
 			</div>
 		</MantineProvider>
 	);
-}
+};
 
 export default App;

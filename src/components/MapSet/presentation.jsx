@@ -1,17 +1,16 @@
-import crs from '../../utils/crs.js';
-import Map from '../Map';
-
-import './style.css';
 import {useEffect, useState} from 'react';
 import {WMSTileLayer} from 'react-leaflet';
 import PropTypes from 'prop-types';
+import crs from '../../utils/crs.js';
+import Map from '../Map/index.jsx';
 
-function MapSet({zoom = 16, lat = 49.735, lon = 13.759}) {
+import './style.css';
+
+function MapSet({zoom, lat = 49.735, lon = 13.759, onZoomChange}) {
 	const [currentCenter, setCenter] = useState([lat, lon]);
-	const [currentZoom, setZoom] = useState(zoom);
 
 	useEffect(() => {
-		setZoom(zoom);
+		onZoomChange(zoom);
 	}, [zoom]);
 
 	useEffect(() => {
@@ -22,9 +21,9 @@ function MapSet({zoom = 16, lat = 49.735, lon = 13.759}) {
 		<div className="m2m-MapSet">
 			<Map
 				center={currentCenter}
-				zoom={currentZoom}
+				zoom={zoom}
 				onCenterChange={setCenter}
-				onZoomChange={setZoom}
+				onZoomChange={onZoomChange}
 				crs={crs.get('EPSG:5514')}
 				zoomControl={false}
 				attributionControl={false}
@@ -39,9 +38,9 @@ function MapSet({zoom = 16, lat = 49.735, lon = 13.759}) {
 			</Map>
 			<Map
 				center={currentCenter}
-				zoom={currentZoom}
+				zoom={zoom}
 				onCenterChange={setCenter}
-				onZoomChange={setZoom}
+				onZoomChange={onZoomChange}
 				crs={crs.get('EPSG:5514')}
 				zoomControl={false}
 			>
@@ -63,6 +62,7 @@ MapSet.propTypes = {
 	lat: PropTypes.number,
 	lon: PropTypes.number,
 	zoom: PropTypes.number,
+	onZoomChange: PropTypes.func,
 };
 
 export default MapSet;
