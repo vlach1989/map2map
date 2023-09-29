@@ -16,7 +16,12 @@ function getParamValue(parameterName) {
 		const value = match[2]
 			? decodeURIComponent(match[2].replace(/\+/g, ' '))
 			: null;
-		return stringToNumberOrReturnInput(value);
+
+		if (parameterName === 'maps') {
+			return getMapsFromUrl(value);
+		} else {
+			return stringToNumberOrReturnInput(value);
+		}
 	} else {
 		return null;
 	}
@@ -41,6 +46,10 @@ function stringToNumberOrReturnInput(input) {
 
 	// If it's neither a valid float nor integer, return the input value
 	return input;
+}
+
+function getMapsFromUrl(layers) {
+	return layers.split(',');
 }
 
 export default {
