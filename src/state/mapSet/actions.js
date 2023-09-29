@@ -19,8 +19,8 @@ const setCenter = center => {
 		const currentLon = Select.mapSet.getLon(getState());
 		if (lat !== currentLat || lon !== currentLon) {
 			dispatch(actionSetCenter(lat, lon));
-			url.set('lat', lat);
-			url.set('lon', lon);
+			url.set('lat', lat.toFixed(6));
+			url.set('lon', lon.toFixed(6));
 		}
 	};
 };
