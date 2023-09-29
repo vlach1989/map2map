@@ -6,7 +6,11 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = () => {
-	return {};
+	return {
+		onLayerSet: () => {
+			// TODO
+		},
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

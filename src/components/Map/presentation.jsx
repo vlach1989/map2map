@@ -6,7 +6,15 @@ import layerHelpers from './layers.jsx';
 import MapLayersControl from '../MapLayersControl';
 import './style.css';
 
-function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
+function Map({
+	center,
+	crs,
+	layers,
+	mapKey,
+	onCenterChange,
+	onZoomChange,
+	zoom,
+}) {
 	const [map, setMap] = useState(null);
 	const [lat, lon] = center;
 
@@ -75,7 +83,7 @@ function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
 
 	return (
 		<div className="m2m-MapWrapper">
-			<MapLayersControl name={layers[0].name} />
+			<MapLayersControl name={layers[0].name} activeLayerKey={mapKey} />
 			{displayMap}
 		</div>
 	);
@@ -85,6 +93,7 @@ Map.propTypes = {
 	center: PropTypes.array,
 	crs: PropTypes.string,
 	layers: PropTypes.array,
+	mapKey: PropTypes.string,
 	onCenterChange: PropTypes.func,
 	onZoomChange: PropTypes.func,
 	zoom: PropTypes.number,
