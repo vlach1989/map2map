@@ -1,3 +1,4 @@
+import '@mantine/core/styles.css';
 import {MantineProvider} from '@mantine/core';
 import MapSet from '../MapSet';
 // import TopBar from '../TopBar/index.jsx';

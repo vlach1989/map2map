@@ -3,6 +3,7 @@ import {MapContainer} from 'react-leaflet';
 import PropTypes from 'prop-types';
 import crsUtils from '../../utils/crs.js';
 import layerHelpers from './layers.jsx';
+import MapLayersControl from '../MapLayersControl';
 import './style.css';
 
 function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
@@ -64,7 +65,7 @@ function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
 				className="m2m-Map"
 				crs={crsUtils.get(crs)}
 				zoomControl={false}
-				attributionControl={true}
+				attributionControl={false}
 			>
 				{mapLayers}
 			</MapContainer>
@@ -72,7 +73,12 @@ function Map({center, crs, layers, onCenterChange, onZoomChange, zoom}) {
 		[],
 	);
 
-	return <>{displayMap}</>;
+	return (
+		<div className="m2m-MapWrapper">
+			<MapLayersControl name={layers[0].name} />
+			{displayMap}
+		</div>
+	);
 }
 
 Map.propTypes = {

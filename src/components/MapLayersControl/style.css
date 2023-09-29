@@ -1,0 +1,10 @@
+.m2m-MapLayersControl {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    z-index: 2;
+}
+
+.mantine-Button-root {
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.35);
+}

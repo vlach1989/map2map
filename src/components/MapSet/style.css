@@ -2,6 +2,8 @@
     display: flex;
     width: 100%;
     height: 100%;
+    grid-gap: .05rem;
+    background: #bbbbbb;
 }
 
 .m2m-MapSet.col-2 {
