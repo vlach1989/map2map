@@ -16,7 +16,7 @@ export const MAPS = {
 		key: 'map2',
 		layers: [
 			{
-				key: 'cuzk_ortofoto_aktualni',
+				key: 'cuzk_ztm',
 			},
 		],
 	},

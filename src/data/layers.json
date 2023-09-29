@@ -1,6 +1,7 @@
 {
 	"cuzk_ortofoto_historicka": {
 		"key": "cuzk_ortofoto_historicka",
+		"name": "Ortofoto (50. léta)",
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
@@ -12,12 +13,25 @@
 	},
 	"cuzk_ortofoto_aktualni": {
 		"key": "cuzk_ortofoto_aktualni",
+		"name": "Ortofotto (aktuální)",
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
 			"url": "https://ags.cuzk.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer",
 			"params": {
 				"layers": "0"
+			}
+		}
+	},
+	"cuzk_ztm": {
+		"key": "cuzk_ztm",
+		"name": "Základní topografická mapa",
+		"type": "wms",
+		"availableCrs": ["EPSG:5514"],
+		"data": {
+			"url": "https://geoportal.cuzk.cz/WMS_ZTM_KIVS/WMService.aspx",
+			"params": {
+				"layers": "ZTM"
 			}
 		}
 	}
