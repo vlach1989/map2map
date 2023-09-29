@@ -15,6 +15,7 @@
 		"@mantine/hooks": "^7.0.0",
 		"@reduxjs/toolkit": "^1.9.5",
 		"@tabler/icons-react": "^2.34.0",
+		"classnames": "^2.3.2",
 		"leaflet": "^1.9.4",
 		"lodash": "^4.17.21",
 		"proj4leaflet": "^1.0.2",

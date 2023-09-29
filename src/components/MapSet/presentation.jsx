@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Map from '../Map';
 
@@ -13,8 +14,13 @@ function MapSet({crs, lat, lon, maps, onCenterChange, onZoomChange, zoom}) {
 		onCenterChange([lat, lon]);
 	}, [onCenterChange, lat, lon]);
 
+	const classes = classnames('m2m-MapSet', {
+		'col-2': maps.length === 4,
+		'col-3': maps.length > 4,
+	});
+
 	return (
-		<div className="m2m-MapSet">
+		<div className={classes}>
 			{maps.map(map => (
 				<Map
 					key={map}
