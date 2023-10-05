@@ -20,7 +20,8 @@ const MapLayersControl = ({activeLayerKey, name, onLayerSet}) => {
 				opened={opened}
 				onClose={close}
 				title="Select layer"
-				position="bottom"
+				position="left"
+				size="xs"
 			>
 				<Radio.Group value={activeLayerKey} onChange={onLayerChange}>
 					<Group mt="xs">
