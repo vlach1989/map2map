@@ -1,4 +1,5 @@
-import {isObjectLike as _isObjectLike, mapValues as _mapValues} from 'lodash';
+import isObjectLike from 'lodash/isObjectLike';
+import mapValues from 'lodash/mapValues';
 
 /**
  * Takes deep object and returns it with values containing path to that key in the object (where value isn't a nested object).
@@ -9,8 +10,8 @@ import {isObjectLike as _isObjectLike, mapValues as _mapValues} from 'lodash';
  * @returns object
  */
 const deepKeyMirror = (object, path) => {
-	if (_isObjectLike(object)) {
-		return _mapValues(object, (value, key) => {
+	if (isObjectLike(object)) {
+		return mapValues(object, (value, key) => {
 			return deepKeyMirror(value, path ? path + '.' + key : key);
 		});
 	} else {
