@@ -4,7 +4,7 @@ import Select from '../../state/Select.js';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		layers: Select.maps.getLayers(state, ownProps.mapKey),
+		layer: Select.maps.getLayer(state, ownProps.mapKey),
 	};
 };
 

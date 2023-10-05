@@ -12,4 +12,9 @@ export default deepKeyMirror({
 			SET: null,
 		},
 	},
+	MAPS: {
+		LAYER: {
+			SET: null,
+		},
+	},
 });

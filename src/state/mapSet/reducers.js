@@ -12,7 +12,7 @@ const initialState = {
 	lat: url.getParamValue('lat') || CENTER[0],
 	lon: url.getParamValue('lon') || CENTER[1],
 	crs: CRS,
-	maps: url.getParamValue('maps') || Object.keys(MAPS),
+	maps: url.getMapKeys() || Object.keys(MAPS),
 };
 
 const setZoom = (state, action) => {

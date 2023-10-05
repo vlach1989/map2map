@@ -1,3 +1,16 @@
+function decode(url) {
+	try {
+		return decodeURIComponent(url);
+	} catch (error) {
+		console.error('Error decoding URL:', error);
+		return null;
+	}
+}
+
+function isStringNumber(str) {
+	return /^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/.test(str);
+}
+
 function set(param, value) {
 	const url = new URL(location);
 	url.searchParams.set(param, value);
@@ -5,7 +18,7 @@ function set(param, value) {
 }
 
 function getParamValue(parameterName) {
-	const queryString = window.location.search;
+	const queryString = decode(window.location.search);
 
 	// Create a regular expression to match the parameter and its value
 	const regex = new RegExp(`[?&]${parameterName}(=([^&#]*)|&|#|$)`, 'i');
@@ -13,14 +26,11 @@ function getParamValue(parameterName) {
 
 	// Check if a match is found
 	if (match) {
-		const value = match[2]
-			? decodeURIComponent(match[2].replace(/\+/g, ' '))
-			: null;
-
-		if (parameterName === 'maps') {
-			return getMapsFromUrl(value);
-		} else {
+		const value = match[2];
+		if (isStringNumber(value)) {
 			return stringToNumberOrReturnInput(value);
+		} else {
+			return value;
 		}
 	} else {
 		return null;
@@ -48,11 +58,17 @@ function stringToNumberOrReturnInput(input) {
 	return input;
 }
 
-function getMapsFromUrl(layers) {
-	return layers.split(',');
+function getMapKeys() {
+	const mapKeys = getParamValue('maps');
+	if (mapKeys) {
+		return mapKeys.split(',');
+	} else {
+		return null;
+	}
 }
 
 export default {
 	set,
 	getParamValue,
+	getMapKeys,
 };

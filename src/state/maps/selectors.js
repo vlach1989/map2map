@@ -12,15 +12,11 @@ const getByKey = createSelector(
 	},
 );
 
-const getLayers = createSelector([getByKey], map => {
-	if (map?.layers?.length) {
-		return map.layers.map(({key}) => layers[key]);
-	} else {
-		return [];
-	}
+const getLayer = createSelector([getByKey], map => {
+	return layers[map.layer] || null;
 });
 
 export default {
 	getAll,
-	getLayers,
+	getLayer,
 };
