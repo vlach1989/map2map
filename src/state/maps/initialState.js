@@ -15,7 +15,12 @@ function get() {
 			}
 		});
 
-		return maps;
+		// for now, use default state some layer is missing
+		if (mapKeys?.length === Object.keys(maps)?.length) {
+			return maps;
+		} else {
+			return {...MAPS};
+		}
 	} else {
 		return {...MAPS};
 	}
