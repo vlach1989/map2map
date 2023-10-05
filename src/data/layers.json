@@ -1,7 +1,7 @@
 {
 	"cz-btm": {
 		"key": "cz-btm",
-		"name": "Základní topografická mapa",
+		"name": "Base topographic map",
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
@@ -13,7 +13,7 @@
 	},
 	"cz-orto-hist": {
 		"key": "cz-orto-hist",
-		"name": "Ortofoto (50. léta)",
+		"name": "Ortofoto (1950s)",
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
@@ -37,7 +37,7 @@
 	},
 	"cz-orto-curr": {
 		"key": "cz-orto-curr",
-		"name": "Ortofoto (aktuální)",
+		"name": "Ortofoto (current)",
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
