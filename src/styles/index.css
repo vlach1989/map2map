@@ -1,0 +1,12 @@
+@import "_resets.css";
+@import "_variables.css";
+@import '../../node_modules/leaflet/dist/leaflet.css';
+
+#root {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

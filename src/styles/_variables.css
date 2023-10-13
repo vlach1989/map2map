@@ -1,0 +1,5 @@
+:root {
+    /* Maps */
+    --map-padding: .5rem;
+    --map-foatingElementShadow: 0 3px 10px 0 rgba(0,0,0,0.35);
+}
