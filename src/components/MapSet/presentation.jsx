@@ -15,8 +15,8 @@ function MapSet({crs, lat, lon, maps, onCenterChange, onZoomChange, zoom}) {
 	}, [onCenterChange, lat, lon]);
 
 	const classes = classnames('m2m-MapSet', {
-		'col-2': maps.length === 4,
-		'col-3': maps.length > 4,
+		'has-2-columns': maps.length === 4,
+		'has-3-columns': maps.length > 4,
 	});
 
 	return (

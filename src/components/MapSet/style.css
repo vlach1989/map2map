@@ -8,24 +8,24 @@
     @media (orientation: portrait) {
         flex-direction: column;
     }
-}
 
-.m2m-MapSet.col-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    @media (orientation: portrait) {
+    &.has-2-columns {
         display: grid;
         grid-template-columns: 1fr 1fr;
+
+        @media (orientation: portrait) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     }
-}
 
-.m2m-MapSet.col-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    @media (orientation: portrait) {
+    &.has-3-columns {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        @media (orientation: portrait) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     }
 }
