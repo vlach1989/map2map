@@ -9,23 +9,19 @@
         flex-direction: column;
     }
 
-    &.has-2-columns {
+    &.has-2-columns, &.has-3-columns {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+    }
 
-        @media (orientation: portrait) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
+    &.has-2-columns {
+        grid-template-columns: 1fr 1fr;
     }
 
     &.has-3-columns {
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
 
         @media (orientation: portrait) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
         }
     }
 }
