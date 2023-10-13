@@ -7,6 +7,7 @@
 		"build": "vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
+		"test": "vitest",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -b gh-pages -d dist"
 	},
@@ -42,6 +43,7 @@
 		"postcss-simple-vars": "^7.0.1",
 		"prettier": "^3.0.3",
 		"process": "^0.11.10",
-		"vite": "^4.4.11"
+		"vite": "^4.4.11",
+		"vitest": "^0.34.6"
 	}
 }

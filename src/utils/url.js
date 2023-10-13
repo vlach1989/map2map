@@ -71,4 +71,5 @@ export default {
 	set,
 	getParamValue,
 	getMapKeys,
+	isStringNumber,
 };
