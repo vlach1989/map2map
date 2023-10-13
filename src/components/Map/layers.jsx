@@ -11,7 +11,7 @@ function get(definition, crs) {
 					key={key}
 					url={data.url}
 					params={data.params}
-					crs={crsUtils.get(crs)}
+					crs={crsUtils.getLeafletCrsDefinition(crs)}
 				/>
 			);
 		default:

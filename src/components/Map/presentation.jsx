@@ -63,7 +63,7 @@ function Map({center, crs, layer, mapKey, onCenterChange, onZoomChange, zoom}) {
 				center={center}
 				zoom={zoom}
 				className="m2m-Map"
-				crs={crsUtils.get(crs)}
+				crs={crsUtils.getLeafletCrsDefinition(crs)}
 				zoomControl={false}
 				attributionControl={false}
 			>

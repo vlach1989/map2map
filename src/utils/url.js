@@ -1,15 +1,4 @@
-function decode(url) {
-	try {
-		return decodeURIComponent(url);
-	} catch (error) {
-		console.error('Error decoding URL:', error);
-		return null;
-	}
-}
-
-function isStringNumber(str) {
-	return /^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/.test(str);
-}
+import {isStringNumber} from './helpers.js';
 
 function set(param, value) {
 	const url = new URL(location);
@@ -18,7 +7,7 @@ function set(param, value) {
 }
 
 function getParamValue(parameterName) {
-	const queryString = decode(window.location.search);
+	const queryString = decodeURIComponent(window.location.search);
 
 	// Create a regular expression to match the parameter and its value
 	const regex = new RegExp(`[?&]${parameterName}(=([^&#]*)|&|#|$)`, 'i');

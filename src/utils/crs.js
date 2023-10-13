@@ -2,7 +2,12 @@ import L from 'leaflet';
 import Proj from 'proj4leaflet';
 import projections from '../data/projections.json';
 
-function get(code) {
+/**
+ * Get Leaflet CRS definition
+ * @param code {string} epsg code in 'EPSG:4326' format
+ * @returns {*|Proj.CRS}
+ */
+function getLeafletCrsDefinition(code) {
 	const definedProjection = projections[code];
 	if (definedProjection) {
 		const {definition, resolutions} = definedProjection;
@@ -24,5 +29,5 @@ function get(code) {
 }
 
 export default {
-	get,
+	getLeafletCrsDefinition,
 };
