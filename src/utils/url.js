@@ -1,4 +1,4 @@
-import {isStringNumber} from './helpers.js';
+import {isStringNumber, stringToNumber} from './helpers.js';
 
 function set(param, value) {
 	const url = new URL(location);
@@ -17,34 +17,13 @@ function getParamValue(parameterName) {
 	if (match) {
 		const value = match[2];
 		if (isStringNumber(value)) {
-			return stringToNumberOrReturnInput(value);
+			return stringToNumber(value);
 		} else {
 			return value;
 		}
 	} else {
 		return null;
 	}
-}
-
-function stringToNumberOrReturnInput(input) {
-	// Try to parse the string as a floating-point number
-	const floatNumber = parseFloat(input);
-
-	// Check if the parsed result is a valid number or not
-	if (!isNaN(floatNumber)) {
-		return floatNumber;
-	}
-
-	// If it's not a valid float, try parsing it as an integer
-	const intNumber = parseInt(input, 10);
-
-	// Check if the parsed result is a valid integer or not
-	if (!isNaN(intNumber)) {
-		return intNumber;
-	}
-
-	// If it's neither a valid float nor integer, return the input value
-	return input;
 }
 
 function getMapKeys() {
