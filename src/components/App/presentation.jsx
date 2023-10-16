@@ -6,11 +6,11 @@ import './style.css';
 
 const App = () => {
 	return (
-		<MantineProvider withGlobalStyles withNormalizeCSS>
-			<div className="m2m-App">
+		<MantineProvider>
+			<main className="m2m-App">
 				{/*<TopBar />*/}
 				<MapSet />
-			</div>
+			</main>
 		</MantineProvider>
 	);
 };
