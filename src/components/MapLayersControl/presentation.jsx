@@ -1,4 +1,4 @@
-import {Button, Drawer, Radio, Group} from '@mantine/core';
+import {Button, Popover, Radio, Stack} from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
 import {IconMap} from '@tabler/icons-react';
 import './style.css';
@@ -16,31 +16,42 @@ const MapLayersControl = ({activeLayerKey, name, onLayerSet}) => {
 
 	return (
 		<div className="m2m-MapLayersControl">
-			<Drawer
+			<Popover
+				position="bottom-start"
+				offset={10}
 				opened={opened}
-				onClose={close}
 				title="Select layer"
-				position="left"
-				size="xs"
+				shadow="md"
+				onClose={close}
+				clickOutsideEvents={['mouseup', 'touchend']}
+				width={300}
 			>
-				<Radio.Group value={activeLayerKey} onChange={onLayerChange}>
-					<Group mt="xs">
-						{options.map(option => (
-							<Radio key={option.key} value={option.key} label={option.name} />
-						))}
-					</Group>
-				</Radio.Group>
-			</Drawer>
-			<Button
-				leftSection={<IconMap size={20} />}
-				variant="filled"
-				// color="gray"
-				radius="xl"
-				size="xs"
-				onClick={open}
-			>
-				{name}
-			</Button>
+				<Popover.Target>
+					<Button
+						leftSection={<IconMap size={20} />}
+						variant="filled"
+						// color="gray"
+						radius="xl"
+						size="xs"
+						onClick={opened ? close : open}
+					>
+						{name}
+					</Button>
+				</Popover.Target>
+				<Popover.Dropdown className="m2m-MapLayersControl-PopoverDropdown">
+					<Radio.Group value={activeLayerKey} onChange={onLayerChange}>
+						<Stack mt="xs">
+							{options.map(option => (
+								<Radio
+									key={option.key}
+									value={option.key}
+									label={option.name}
+								/>
+							))}
+						</Stack>
+					</Radio.Group>
+				</Popover.Dropdown>
+			</Popover>
 		</div>
 	);
 };
