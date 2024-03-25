@@ -1,18 +1,12 @@
 .m2m-TopBar {
     height: 3rem;
     width: 100%;
-    background-color: rgba(255, 255, 255, .5);
-    backdrop-filter: blur(10px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    background-color: rgba(245, 246, 247);
     display: flex;
     font-family: "Nunito Sans", Arial, sans-serif;
     grid-gap: 1rem;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
 }
 
 .m2m-TopBar > div {
