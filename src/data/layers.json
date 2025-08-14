@@ -5,9 +5,9 @@
 		"type": "wms",
 		"availableCrs": ["EPSG:5514"],
 		"data": {
-			"url": "https://geoportal.cuzk.cz/WMS_ZTM_KIVS/WMService.aspx",
+			"url": "https://ags.cuzk.gov.cz/arcgis1/services/ZTM/ZTM10/MapServer/WMSServer",
 			"params": {
-				"layers": "ZTM"
+				"layers": "0"
 			}
 		}
 	},
