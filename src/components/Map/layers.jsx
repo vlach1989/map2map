@@ -12,6 +12,7 @@ function get(definition, crs) {
 					url={data.url}
 					params={data.params}
 					crs={crsUtils.getLeafletCrsDefinition(crs)}
+					maxZoom={22}
 				/>
 			);
 		default:
