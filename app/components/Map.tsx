@@ -1,44 +1,38 @@
 "use client";
 
 import { DeckGL } from "@deck.gl/react";
-import { TileLayer } from "@deck.gl/geo-layers";
-import { BitmapLayer } from "@deck.gl/layers";
+import { createOsmLayer, createOrtofotoLayer } from "./layers";
 
+/**
+ * Initial camera position — centred on Prague at zoom 13
+ * so ortofoto detail is clearly visible on load.
+ */
 const INITIAL_VIEW_STATE = {
   longitude: 14.42,
   latitude: 50.08,
-  zoom: 5,
+  zoom: 13,
   pitch: 0,
   bearing: 0,
 };
 
+/**
+ * Full-screen map component.
+ *
+ * Renders two raster tile layers:
+ *  1. OSM base map   — provides road/label context
+ *  2. ČÚZK Ortofoto  — aerial imagery overlay from the Czech cadastral office
+ *
+ * Layer order in the array matters: later layers render on top.
+ */
 export default function Map() {
-  const tileLayer = new TileLayer({
-    id: "osm-tile-layer",
-    data: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-    minZoom: 0,
-    maxZoom: 19,
-    tileSize: 256,
-    renderSubLayers: (props) => {
-      const { boundingBox } = props.tile;
-      return new BitmapLayer(props, {
-        data: undefined,
-        image: props.data,
-        bounds: [
-          boundingBox[0][0],
-          boundingBox[0][1],
-          boundingBox[1][0],
-          boundingBox[1][1],
-        ],
-      });
-    },
-  });
+  const osmLayer = createOsmLayer();
+  const ortofotoLayer = createOrtofotoLayer();
 
   return (
     <DeckGL
       initialViewState={INITIAL_VIEW_STATE}
       controller={true}
-      layers={[tileLayer]}
+      layers={[osmLayer, ortofotoLayer]}
       style={{ width: "100%", height: "100%" }}
     />
   );
